@@ -10,5 +10,9 @@ class User(db.Model):
         return f'User {self.username}'
 
 
-class
+class Pitch:
+
+    all_pitches = []
+    
+    def __init__(self,pitch_id,category)
     
