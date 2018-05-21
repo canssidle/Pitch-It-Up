@@ -1,6 +1,10 @@
+from flask import render_template, request, redirect, url_for, abort 
 from . import main
 
 @main.route('/')
 def index():
-    return '<h1> Hello World </h1>'
+    title='Pitch-It-Up'
+
+    return render_template('index.html', title = title)
+
 
