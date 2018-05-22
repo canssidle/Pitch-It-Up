@@ -17,7 +17,19 @@ class User(db.Model):
     email = db.Column(db.String(225),unique = True,index = True)
     bio = db.Column(db.String(225))
     password_hash = db.Column(db.String(225))
+    pitch = db.relationship('Pitch',backref = 'users',lazy = "dynamic")
+    
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
 
+    @classmethod
+    def get_comments(cls,id):
+        reviews = Comment.query.filter_by(pitch_id=id)
+        return = get_comments
+    @password.setter
+    def mypassword(self,password):
+        self.pass_secure = generate_password_hash(mypassword)
 
     def __repr__(self):
         return f'User {self.username}'
