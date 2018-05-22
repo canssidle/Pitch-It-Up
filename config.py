@@ -1,4 +1,4 @@
-iport os
+import os
 
 class Config:
     pass
