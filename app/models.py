@@ -29,13 +29,26 @@ class User(db.Model):
         return = get_comments
     @password.setter
     def mypassword(self,password):
-        self.pass_secure = generate_password_hash(mypassword)
+        self.new_password = generate_password_hash(mypassword)
+    
+    def verify_pass(self,password):
+        return check_password_hash(self.new_password,password)
+
 
     def __repr__(self):
         return f'User {self.username}'
 
 
-class Pitch:
+class Pitch(db.Model):
+
+    __table__ = 'pitch'
+
+    id = (db.Integer,primary_key = True)
+    category_id = db.Column(db.Integer)
+    pitch = db.Column(db.String)
+    category_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment' ,backref = 'pitch',lazy = "dynamic")
+
 
     all_pitches = []
     
