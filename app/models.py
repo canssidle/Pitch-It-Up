@@ -48,9 +48,33 @@ class Pitch(db.Model):
     pitch = db.Column(db.String)
     category_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship('Comment' ,backref = 'pitch',lazy = "dynamic")
+    
+    def save_pitch(self):
+
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_all_pitches(cls):
+
+        # all_pitches = []
+        return Pitch.query.all()
+
+    @classmethod
+    def get_pitches_by_category(cls,categories_id):
+        return Pitch.query.filter_by(category_id = categories_id)
 
 
-    all_pitches = []
+    @classmethod
+    def get_pitch(cls,id):
+        return Pitch.query.filter_by(id)
+
+class Comments
+
+
+
+
+    
     
     def __init__(self, pitch_id, category):
     
