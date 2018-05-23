@@ -1,0 +1,8 @@
+{% extends 'main.html'%}
+{% import 'bootstarp/wtf.html' as wtf %}
+
+{% block content %}
+<div class = 'form-control'>
+    {{wtf.quick_form(login_form)}}
+</div>
+{% endblock %}
