@@ -14,7 +14,19 @@
              <li class="nav-item mx-0 mx-lg-1">
                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">About</a>
              </li>
+             {% if current_user.is_authenticated %}
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.profile',username=current_user.username) }}">Profile</a> </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.logout')}}">logout</a> </li>
+              {% else %}
+                <li class="nav-item mx-0 mx-lg-1">
+                  <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.login')}}">login</a> </li>
+                  <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.register')}}">Register</a> </li>
+                  {% endif %}
            </ul>
+
          </div>
   
          <div class="navbar-nav">
