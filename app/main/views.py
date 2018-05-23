@@ -3,7 +3,9 @@ from . import main
 
 @main.route('/')
 def index():
-    title='Pitch-It-Up'
+
+    title = 'PITCH-IT-UP'
+    
 
     return render_template('index.html', title = title)
 
